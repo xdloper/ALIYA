@@ -1,6 +1,6 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
-const webpackMainConfig = require('./webpack.config.main');
+const WEBPACK_MAIN_CONFIG = require('./webpack.config.main');
 
 let webpack_config_dev = {
      mode: 'development',
@@ -17,5 +17,5 @@ let webpack_config_dev = {
 }
 
 module.exports = ()=>{
-     return webpackMerge.merge(webpackMainConfig,webpack_config_dev);
+     return webpackMerge.merge(WEBPACK_MAIN_CONFIG,webpack_config_dev);
 }

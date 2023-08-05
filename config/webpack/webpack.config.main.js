@@ -4,17 +4,18 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 // CONSTANT
-const DOTENVPATH = path.resolve(__dirname,'..','dotenv', '.env');
+const ENVPATH = path.resolve(__dirname,'..','dotenv', '.env');
 
 // plugin imports
-const HTMLWEBPACKPLUGIN = require('html-webpack-plugin');
-const MINICSSEXTRACTPLUGIN = require('mini-css-extract-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //setup
-dotenv.config({path:DOTENVPATH});
+dotenv.config({path:ENVPATH});
 
-module.exports = { 
-     entry:path.join(__dirname,'..','..','src/index.jsx'),
+/* eğer react içi kullanmak istiyorsan react ön yükleyici gerekir devDepend olarak kurulu tek yapman gereken '@babel/preset-react' bunu js yerindeki presets arrayine eklemek */ 
+const config = { 
+     entry:path.join(__dirname,'..','..','src/index.js'),
      module:{
           rules:[
                {
@@ -23,21 +24,23 @@ module.exports = {
                     use: {
                         loader: 'babel-loader',
                         options: {
-                         presets: ['@babel/preset-env', '@babel/preset-react']
+                         presets: ['@babel/preset-env']
                        }
                     }
                },
                {                
                     test: /\.(s[ac]|c)ss$/i,                
+                    include: path.resolve(__dirname, '../../src/styles/global.scss'),
+                    exclude: /node_modules/,
                     use: [
                     {                    
-                      loader: MINICSSEXTRACTPLUGIN.loader,                                  
+                      loader: MiniCssExtractPlugin.loader,                                  
                       options: { publicPath: "" },                  
                     },                  
                     "css-loader",                  
                     "postcss-loader",                                                 
                     "sass-loader",                                  
-                    ],              
+                    ],           
                },
                {
                     test: /\.geojson$/,
@@ -55,12 +58,12 @@ module.exports = {
           ]
      },
      plugins:[
-          new MINICSSEXTRACTPLUGIN(
+          new MiniCssExtractPlugin(
                {
                     filename: 'main.[contenthash].css',
                }
           ),
-          new HTMLWEBPACKPLUGIN({
+          new HtmlWebPackPlugin({
                inject: true,
                hash: true,
                title:process.env.X_NAME,
@@ -73,3 +76,5 @@ module.exports = {
           })
      ]
 }
+
+module.exports = config
