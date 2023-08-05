@@ -5,7 +5,7 @@ const WEBPACK_MAIN_CONFIG = require('./webpack.config.main').default;
 let webpack_config_prod = {
      mode: 'production',
      output:{
-          path:path.resolve(__dirname,'..','..','dist'),
+          path:path.resolve(__dirname,'..','..','..','dist'),
           filename:'main.[contenthash].js',
      }
 }
