@@ -49,12 +49,12 @@ const config = {
                {
                     test: /\.(png|svg|jpg|gif|ico)$/,
                     use: [{
-                    loader: 'file-loader',
-                    options:  {
-                         name: '[name].[ext]',
-                              }
-                         }]    
-               },
+                      loader: 'file-loader', // veya 'url-loader' kullanabilirsiniz
+                      options: {
+                        name: '[name].[ext]',
+                      }
+                    }]
+                  }
           ]
      },
      plugins:[

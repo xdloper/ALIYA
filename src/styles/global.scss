@@ -1,3 +1,222 @@
-$bg-color:#eee;
+@import './reset.css';
+@import "bootstrap/scss/bootstrap";
 
-body{background:$bg-color;}
+@import './variables.scss';
+
+    body{
+        background:$bg-color;
+        width: 100%;
+        height:100vh;
+        overflow-x: hidden;
+    }
+
+    .hr{
+        width:5%;
+        height:3px;
+        margin: 0 auto;
+        border:0;
+        background:black;
+        opacity:1;
+    }
+
+    input{
+        width: 100%;
+        height:30px;
+        border: 2px solid #222;
+        border-radius: 9990px;
+        background-color: transparent;
+        padding: 20px;
+        margin:5px;
+    }
+
+
+    header{
+        position: relative;
+        width: 100%;
+        height:auto;
+        background-color: rgb(255, 255, 255);
+        box-shadow:0 2px 8px -3px #0000004a;
+        padding: 50px;
+        margin-bottom: 0px !important;  
+        z-index: 99999999;
+
+       .header{
+            width:100%;
+            height: 100%;
+            overflow:hidden;
+            display: flex;
+
+
+            img{
+                display:block;
+            }
+            .container{
+                header{
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .feature{
+        position: relative;
+        z-index: 0;
+        width: 100%;
+        height:500px;
+        background:linear-gradient(to right,#e5e5e5,transparent);
+        margin-bottom:100px;
+        border-radius:0 0 1000px 0;
+        overflow:hidden;
+
+        .text{
+            position: absolute;
+            margin:200px 100px;
+        }
+
+        &::after {
+            content: ""; 
+            position: absolute;
+            background-image: url('../images/engineer.jpg');
+            width: 100%;
+            height: 100%;
+            display: block; 
+          }
+    }
+
+    .gallery{
+        .grid-4{
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            gap: 10px 10px;
+            height:auto;
+    
+            .box{
+                width: 100%;
+                height:100px;
+                background-color: #fff;
+                border-radius: 10px;
+    
+            }
+        }
+    
+        .grid-3{
+            margin-top:10px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px 10px;
+            height:auto;
+    
+            .box{
+                width: 100%;
+                height:200px;
+                background-color: #fff;
+                border-radius: 10px;
+    
+            }
+        }
+        .grid-2{
+            margin-top:10px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 10px 10px;
+            height:auto;
+    
+            .box{
+                width: 100%;
+                height:200px;
+                background-color: #fff;
+                border-radius: 10px;
+    
+            }
+        }
+
+
+        .box{
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+        }
+        .box:hover{
+            opacity:0.8;
+            transform:scale(1.2) ;
+            transition: all 0.2s ease;
+        }
+    }
+  
+    .contact{
+
+        .mapEmail{
+            display: flex;
+            width: 100%;
+            height:400px;
+            background-color: rgb(232, 232, 232);
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding:30px;
+            .map,.email{
+                width: 100%;
+                height: 100%;
+            }
+
+            .map{
+
+            }
+
+            .email{
+                
+                box-sizing: border-box;
+                padding: 10px;
+            }
+
+            button{
+                background-color: transparent;
+                border:20px solid 000;
+                border-radius: 5px;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .scrollToTopBtn {
+        background-color: #fff;
+        border: none;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        font-size: 30px;
+        line-height: 48px;
+        width: 48px;
+            /* place it at the bottom right corner */
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+            /* keep it on top of everything else */
+        z-index: 100;
+            /* hide with opacity */
+        opacity: 0;
+            /* also add a translate effect */
+            /* and a transition */
+        transition: all .5s ease
+    }
+    
+    .showBtn {
+        opacity: 1;
+        transform: translateY(0)
+    } 
+    footer{
+        margin-top:50px;
+        width: 100%;
+        height:30px;
+        background-color: rgb(255, 255, 255);
+        padding: 0px;   
+            p{
+                width: 100%;
+                line-height: 30px;
+                text-align: center;
+            }
+        
+    }
