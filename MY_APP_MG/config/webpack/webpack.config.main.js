@@ -51,7 +51,7 @@ const config = {
                     use: [{
                       loader: 'file-loader', // veya 'url-loader' kullanabilirsiniz
                       options: {
-                        name: '[name].[ext]',
+                         name: '[name].[ext]',
                       }
                     }]
                   }
