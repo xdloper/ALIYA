@@ -4,16 +4,17 @@ const WEBPACK_MAIN_CONFIG = require('./webpack.config.main');
 
 let webpack_config_dev = {
      mode: 'development',
-     devServer:{
-          static:path.join(__dirname,'..','..','..','src/public/index.html'),
+     devServer: {
+          static: {
+            directory: path.join(__dirname, '/'), // HTML dosyasının bulunduğu üst klasör
+          },
           port:1000,
           hot:true,
           open:true,
      },
      output:{
-          path:path.resolve(__dirname,'..','..','..','dist'),
+          path:path.resolve(__dirname,'..','..','..','dist/assets'),
           filename:'main.js',
-
      }
 }
 

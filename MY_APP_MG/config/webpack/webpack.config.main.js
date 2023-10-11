@@ -34,9 +34,9 @@ const config = {
                     exclude: /node_modules/,
                     use: [
                     {                    
-                      loader: MiniCssExtractPlugin.loader,                                  
-                      options: { publicPath: "" },                  
-                    },                  
+                         loader: MiniCssExtractPlugin.loader,                                                 
+                    },
+                    
                     "css-loader",                  
                     "postcss-loader",                                                 
                     "sass-loader",                                  
@@ -48,10 +48,12 @@ const config = {
                },
                {
                     test: /\.(png|svg|jpg|gif|ico)$/,
+                    type:'asset/resource',
                     use: [{
                       loader: 'file-loader', // veya 'url-loader' kullanabilirsiniz
                       options: {
                          name: '[name].[ext]',
+                         outputPath: 'images'
                       }
                     }]
                   }
@@ -60,16 +62,17 @@ const config = {
      plugins:[
           new MiniCssExtractPlugin(
                {
-                    filename: 'main.[contenthash].css',
+                    filename: 'style/main.[contenthash].css',
                }
           ),
           new HtmlWebPackPlugin({
-               inject: true,
+               inject: 'body',
                hash: true,
                title:process.env.X_NAME,
                favicon: path.join(__dirname,'..','..','..','src/public/icons/favicon.ico'),
                template: path.join(__dirname,'..','..','..','src/public/index.html'),  
-               filename: 'index.html',
+               filename: path.join('index.html'),
+               minify: false
           }),
           new webpack.DefinePlugin({
                "process.env": JSON.stringify(process.env)
