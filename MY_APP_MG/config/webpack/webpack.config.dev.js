@@ -6,7 +6,7 @@ let webpack_config_dev = {
      mode: 'development',
      devServer: {
           static: {
-            directory: path.join(__dirname, '/'), // HTML dosyasının bulunduğu üst klasör
+               directory: path.join(__dirname, '../'), // HTML dosyasının bulunduğu üst klasör
           },
           port:1000,
           hot:true,
@@ -15,6 +15,7 @@ let webpack_config_dev = {
      output:{
           path:path.resolve(__dirname,'..','..','..','dist/assets'),
           filename:'main.js',
+          assetModuleFilename:'images/[name][hash][ext][query]'
      }
 }
 

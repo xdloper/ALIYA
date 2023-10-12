@@ -7,6 +7,7 @@ let webpack_config_prod = {
      output:{
           path:path.resolve(__dirname,'..','..','..','dist/assets'),
           filename:'main.[contenthash].js',
+          assetModuleFilename:'images/[name][hash][ext][query]'
      }
 }
 

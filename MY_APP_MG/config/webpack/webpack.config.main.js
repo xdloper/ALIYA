@@ -49,13 +49,7 @@ const config = {
                {
                     test: /\.(png|svg|jpg|gif|ico)$/,
                     type:'asset/resource',
-                    use: [{
-                      loader: 'file-loader', // veya 'url-loader' kullanabilirsiniz
-                      options: {
-                         name: '[name].[ext]',
-                         outputPath: 'images'
-                      }
-                    }]
+
                   }
           ]
      },
@@ -71,7 +65,7 @@ const config = {
                title:process.env.X_NAME,
                favicon: path.join(__dirname,'..','..','..','src/public/icons/favicon.ico'),
                template: path.join(__dirname,'..','..','..','src/public/index.html'),  
-               filename: path.join('index.html'),
+               filename: path.join('..','index.html'),
                minify: false
           }),
           new webpack.DefinePlugin({
