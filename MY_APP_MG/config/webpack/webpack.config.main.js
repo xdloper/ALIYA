@@ -1,14 +1,13 @@
 // required importants
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const dotenv = require('dotenv');
 const path = require('path');
 
+const pluginConfig = require('./config/plugin.js')
+
+
 // CONSTANT
 const ENVPATH = path.resolve(__dirname,'..','dotenv', '.env');
-
-// plugin imports
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //setup
 dotenv.config({path:ENVPATH});
@@ -52,26 +51,9 @@ const config = {
 
                   }
           ]
-     },
-     plugins:[
-          new MiniCssExtractPlugin(
-               {
-                    filename: 'style/main.[contenthash].css',
-               }
-          ),
-          new HtmlWebPackPlugin({
-               inject: 'body',
-               hash: true,
-               title:process.env.X_NAME,
-               favicon: path.join(__dirname,'..','..','..','src/public/icons/favicon.ico'),
-               template: path.join(__dirname,'..','..','..','src/public/index.html'),  
-               filename: path.join('..','index.html'),
-               minify: false
-          }),
-          new webpack.DefinePlugin({
-               "process.env": JSON.stringify(process.env)
-          })
-     ]
+     }
 }
+
+
 
 module.exports = config

@@ -76,24 +76,26 @@
         position: relative;
         z-index: 0;
         width: 100%;
-        height:500px;
-        background:linear-gradient(to right,#e5e5e5,transparent);
-        margin-bottom:100px;
-        border-radius:0 0 1000px 0;
-        overflow:hidden;
+        height: 500px;
+        background-image: url(../images/engineer.jpg);
+        margin-bottom: 100px;
+        border-radius: 0 0 1000px 0;
+        overflow: hidden;
 
         .text{
             position: absolute;
-            margin:200px 100px;
+            margin: 380px 100px;
+            color:white;
+            font-weight: bolder;
         }
 
-        &::after {
-            content: ""; 
+        &::before {
+            content: "";
             position: absolute;
-            background-image: url('../images/engineer.jpg');
+            background: linear-gradient(to right, #2e0998bd, transparent);
             width: 100%;
             height: 100%;
-            display: block; 
+            display: block;
           }
     }
 
@@ -128,6 +130,10 @@
                 background-color: #fff;
                 border-radius: 10px;
     
+                img{
+                    width: 450px;
+                    height:100%;
+                }
             }
         }
         .grid-2{
@@ -143,19 +149,25 @@
                 height:200px;
                 background-color: #fff;
                 border-radius: 10px;
-    
+                
+                img{
+                    width:660px;
+                    height:350px;
+                }
             }
+
         }
 
 
         .box{
             cursor: pointer;
             transition: all 0.2s ease;
+            overflow: hidden;
 
         }
         .box:hover{
             opacity:0.8;
-            transform:scale(1.2) ;
+            transform:scale(1.1) ;
             transition: all 0.2s ease;
         }
     }
