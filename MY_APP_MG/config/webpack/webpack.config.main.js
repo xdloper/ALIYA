@@ -1,14 +1,13 @@
 // required importants
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const dotenv = require('dotenv');
 const path = require('path');
 
+const pluginConfig = require('./config/plugin.js')
+
+
 // CONSTANT
 const ENVPATH = path.resolve(__dirname,'..','dotenv', '.env');
-
-// plugin imports
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //setup
 dotenv.config({path:ENVPATH});
@@ -34,9 +33,9 @@ const config = {
                     exclude: /node_modules/,
                     use: [
                     {                    
-                      loader: MiniCssExtractPlugin.loader,                                  
-                      options: { publicPath: "" },                  
-                    },                  
+                         loader: MiniCssExtractPlugin.loader,                                                 
+                    },
+                    
                     "css-loader",                  
                     "postcss-loader",                                                 
                     "sass-loader",                                  
@@ -48,33 +47,13 @@ const config = {
                },
                {
                     test: /\.(png|svg|jpg|gif|ico)$/,
-                    use: [{
-                    loader: 'file-loader',
-                    options:  {
-                         name: '[name].[ext]',
-                              }
-                         }]    
-               },
+                    type:'asset/resource',
+
+                  }
           ]
-     },
-     plugins:[
-          new MiniCssExtractPlugin(
-               {
-                    filename: 'main.[contenthash].css',
-               }
-          ),
-          new HtmlWebPackPlugin({
-               inject: true,
-               hash: true,
-               title:process.env.X_NAME,
-               favicon: path.join(__dirname,'..','..','..','src/public/icons/favicon.ico'),
-               template: path.join(__dirname,'..','..','..','src/public/index.html'),  
-               filename: 'index.html',
-          }),
-          new webpack.DefinePlugin({
-               "process.env": JSON.stringify(process.env)
-          })
-     ]
+     }
 }
+
+
 
 module.exports = config
